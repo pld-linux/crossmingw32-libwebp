@@ -1,14 +1,14 @@
 Summary:	WebP image codec library and tools - cross MinGW32 version
 Summary(pl.UTF-8):	Biblioteka i narzędzia do kodeka obrazów WebP - wersja skrośna MinGW32
 Name:		crossmingw32-libwebp
-Version:	0.1.3
+Version:	0.2.0
 Release:	1
 License:	BSD
 Group:		Development/Libraries
 #Source0Download: http://code.google.com/p/webp/downloads/list
 Source0:	http://webp.googlecode.com/files/libwebp-%{version}.tar.gz
-# Source0-md5:	254d4670e14e9ed881f0536b006ab336
-URL:		http://code.google.com/speed/webp/
+# Source0-md5:	75f33cabe4af0dfb51d751c67ae1b3d0
+URL:		https://developers.google.com/speed/webp/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
 BuildRequires:	crossmingw32-gcc
@@ -78,7 +78,7 @@ sed -i -e 's/libwebp_la_LDFLAGS.*/& -no-undefined/' src/Makefile.am
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__autoconf}
 %{__autoheader}
 %{__automake}
@@ -120,4 +120,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files dll
 %defattr(644,root,root,755)
-%{_dlldir}/libwebp-2.dll
+%{_dlldir}/libwebp-4.dll
