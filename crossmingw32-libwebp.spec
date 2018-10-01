@@ -1,13 +1,13 @@
 Summary:	WebP image codec libraries - cross MinGW32 version
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP - wersja skrośna MinGW32
 Name:		crossmingw32-libwebp
-Version:	0.4.0
+Version:	1.0.0
 Release:	1
 License:	BSD
 Group:		Development/Libraries
-#Source0Download: http://code.google.com/p/webp/downloads/list
-Source0:	http://webp.googlecode.com/files/libwebp-%{version}.tar.gz
-# Source0-md5:	c8dd1d26eb9566833aba269b86d97e68
+#Source0Download: http://downloads.webmproject.org/releases/webp/index.html
+Source0:	http://downloads.webmproject.org/releases/webp/libwebp-%{version}.tar.gz
+# Source0-md5:	967b8f087cb392e6cc94d5e116a120c0
 URL:		https://developers.google.com/speed/webp/
 BuildRequires:	autoconf >= 2.50
 BuildRequires:	automake
@@ -102,7 +102,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_dlldir}
-mv -f $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
+%{__mv} $RPM_BUILD_ROOT%{_prefix}/bin/*.dll $RPM_BUILD_ROOT%{_dlldir}
 
 %if 0%{!?debug:1}
 %{target}-strip --strip-unneeded -R.comment -R.note $RPM_BUILD_ROOT%{_dlldir}/*.dll
@@ -134,6 +134,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files dll
 %defattr(644,root,root,755)
-%{_dlldir}/libwebp-5.dll
-%{_dlldir}/libwebpmux-1.dll
-%{_dlldir}/libwebpdemux-1.dll
+%{_dlldir}/libwebp-7.dll
+%{_dlldir}/libwebpmux-3.dll
+%{_dlldir}/libwebpdemux-2.dll
