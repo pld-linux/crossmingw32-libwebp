@@ -1,13 +1,13 @@
 Summary:	WebP image codec libraries - cross MinGW32 version
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP - wersja skrośna MinGW32
 Name:		crossmingw32-libwebp
-Version:	1.2.4
+Version:	1.3.0
 Release:	1
 License:	BSD
 Group:		Development/Libraries
 #Source0Download: http://downloads.webmproject.org/releases/webp/index.html
 Source0:	http://downloads.webmproject.org/releases/webp/libwebp-%{version}.tar.gz
-# Source0-md5:	a80a95461a751118bb7d457b1afca50d
+# Source0-md5:	994cf2efb664ef5140fa0b56b83fa721
 URL:		https://developers.google.com/speed/webp/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
@@ -93,12 +93,15 @@ sed -i -e 's/libwebp_la_LDFLAGS.*/& -no-undefined/' src/Makefile.am
 	--enable-libwebpdemux \
 	--enable-libwebpmux
 
-# only chosen dors to get just the library, no utils
+# only chosen dirs to get just the library, no utils
 %{__make} -C sharpyuv
 %{__make} -C src
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
+%{__make} -C sharpyuv install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 %{__make} -C src install \
 	DESTDIR=$RPM_BUILD_ROOT
@@ -117,6 +120,8 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc AUTHORS COPYING ChangeLog NEWS PATENTS README.md
+%{_libdir}/libsharpyuv.dll.a
+%{_libdir}/libsharpyuv.la
 %{_libdir}/libwebp.dll.a
 %{_libdir}/libwebp.la
 %{_libdir}/libwebpdemux.dll.a
@@ -124,18 +129,21 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libwebpmux.dll.a
 %{_libdir}/libwebpmux.la
 %{_includedir}/webp
+%{_pkgconfigdir}/libsharpyuv.pc
 %{_pkgconfigdir}/libwebp.pc
 %{_pkgconfigdir}/libwebpdemux.pc
 %{_pkgconfigdir}/libwebpmux.pc
 
 %files static
 %defattr(644,root,root,755)
+%{_libdir}/libsharpyuv.a
 %{_libdir}/libwebp.a
 %{_libdir}/libwebpdemux.a
 %{_libdir}/libwebpmux.a
 
 %files dll
 %defattr(644,root,root,755)
+%{_dlldir}/libsharpyuv-0.dll
 %{_dlldir}/libwebp-7.dll
 %{_dlldir}/libwebpmux-3.dll
 %{_dlldir}/libwebpdemux-2.dll
