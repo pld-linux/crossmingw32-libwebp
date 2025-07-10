@@ -1,13 +1,13 @@
 Summary:	WebP image codec libraries - cross MinGW32 version
 Summary(pl.UTF-8):	Biblioteki do kodeka obrazów WebP - wersja skrośna MinGW32
 Name:		crossmingw32-libwebp
-Version:	1.5.0
+Version:	1.6.0
 Release:	1
 License:	BSD
 Group:		Development/Libraries
 #Source0Download: http://downloads.webmproject.org/releases/webp/index.html
 Source0:	http://downloads.webmproject.org/releases/webp/libwebp-%{version}.tar.gz
-# Source0-md5:	8f659e426eaa2aeec4b36bc9ea43b3f3
+# Source0-md5:	cceb6447180f961473b181c9ef38b630
 URL:		https://developers.google.com/speed/webp/
 BuildRequires:	autoconf >= 2.60
 BuildRequires:	automake
